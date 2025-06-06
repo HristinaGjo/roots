@@ -20,7 +20,19 @@ const sketch = () => {
     [0, 0, 0, 0, 1, 0, 0, 0, 0]
   ];
 
-  return ({ context, width, height }) => {
+  // Data map - flicker Speed map 
+  const flickerSpeeds = []; // empty box
+
+  for(let i = 0; i < 9; i++) {
+    flickerSpeeds[i] = [];
+    for(let j = 0; j < 9; j++){
+      //flickerSpeeds[i][j] = random value
+      flickerSpeeds[i][j] = 1 + Math.random() * 2; // creates one unique speed per cell between 1 - 3;
+    }
+  }
+  
+
+  return ({ context, width, height, time}) => {
     context.fillStyle = 'black';
     context.fillRect(0, 0, width, height);
 
@@ -35,17 +47,19 @@ const sketch = () => {
 
     for(let i = 0; i < 9; i++){
       for(let j = 0; j < 9; j++){
-        x = ix + (w * i);
-        y = iy + (h * j);
+        x = ix + (w * i); // column - horizontal;
+        y = iy + (h * j); // row - vertical;
 
         context.beginPath();
         context.rect(x, y, w, h);
         context.strokeStyle = '#440000';
         context.stroke();
 
-        if (pattern[i][j] === 1 && Math.random() < 0.95){
-          context.fillStyle = ' #ff0000'
-          context.fillRect(x,y,w,h)
+        if (pattern[i][j] === 1){
+          const speed = flickerSpeeds[i][j]; // Get speed for this cells
+          const alpha = Math.abs(Math.sin(time * speed * 0.5)); // calculates the opacity (alpha) for flickering cell - smooth change of Value between 0 - 1
+          context.fillStyle = `rgba(255, 0, 0, ${alpha.toFixed(2)})`;
+          context.fillRect(x,y,w,h);
         }
       }
     }
@@ -55,21 +69,11 @@ const sketch = () => {
 canvasSketch(sketch, settings);
 
 
-        /*if (i = 4) {
-          context.beginPath();
-          context.fillStyle = 'black'
+
+        /*if (pattern[i][j] === 1){
+          const speed = flickerSpeeds[i][j]; // Get speed for this cells
+          const alpha = Math.abs(Math.sin(time * speed));
+          context.fillStyle = ' #ff0000';
           context.fillRect(x,y,w,h);
-          context.stroke; 
         }*/
 
-            /*const pattern = [
-    [0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0]
-  ];*/
