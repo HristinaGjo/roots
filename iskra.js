@@ -22,7 +22,7 @@ const sketch = () => {
       for(let j = 0; j < 9; j++){
         x = ix + (w * i);
         y = iy + (h * j);
-
+        
         context.beginPath();
         context.rect(x, y, w, h);
         context.strokeStyle = 'black';
