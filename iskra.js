@@ -1,7 +1,8 @@
 const canvasSketch = require('canvas-sketch');
 
 const settings = {
-  dimensions: [ 1080, 1080 ] // px
+  dimensions: [ 1080, 1080 ], // px
+  animate: true
 };
 
 const sketch = () => {
@@ -20,10 +21,10 @@ const sketch = () => {
   ];
 
   return ({ context, width, height }) => {
-    context.fillStyle = 'white';
+    context.fillStyle = 'black';
     context.fillRect(0, 0, width, height);
 
-    context.lineWidth = 1;
+    context.lineWidth = 0.5;
 
     const w = width * 0.07;
     const h = height * 0.07;
@@ -39,11 +40,11 @@ const sketch = () => {
 
         context.beginPath();
         context.rect(x, y, w, h);
-        context.strokeStyle = 'black';
+        context.strokeStyle = '#440000';
         context.stroke();
 
-        if (pattern[i][j] === 1){
-          context.fillStyle = 'red'
+        if (pattern[i][j] === 1 && Math.random() < 0.95){
+          context.fillStyle = ' #ff0000'
           context.fillRect(x,y,w,h)
         }
       }
