@@ -35,11 +35,13 @@ const sketch = () => {
   }
 
   return ({ context, width, height, time}) => {
-    context.fillStyle = 'black';
+    context.fillStyle = '#2a0000';
     context.fillRect(0, 0, width, height);
 
     const w = width / gridSize;
     const h = height / gridSize;
+
+    context.lineWidth = 0,5;
 
     // Draw the background grid
     for(let i = 0; i < gridSize; i++){
@@ -49,8 +51,8 @@ const sketch = () => {
 
         context.beginPath();
         context.rect(x,y,w,h)
-        context.strokeStyle = 'rgb(61, 2, 2)'
-        context.stroke();
+        context.strokeStyle = 'rgb(66, 4, 4)'
+        //context.stroke();
       }
     }
 
@@ -63,7 +65,7 @@ const sketch = () => {
             if (pattern[i][j] === 1) {
               const speed = flickerSpeeds[i][j]; // Get speed for these cells
               const alpha = Math.abs(Math.sin(time * speed * 0.5))
-              context.fillStyle = `rgba(210, 10, 0, ${alpha.toFixed(2)})`;
+              context.fillStyle = `rgba(170, 28, 28, ${alpha.toFixed(2)})`;
               context.fillRect(x,y,w,h)
             }
           }
