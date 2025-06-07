@@ -9,26 +9,20 @@ const sketch = () => {
 
   // Iskra Pattern 
   const pattern = [
-    [0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0, 0, 0, 1, 0],
     [0, 0, 1, 0, 0, 0, 1, 0, 0],
-    [0, 1, 0, 0, 1, 0, 0, 1, 0],
-    [1, 0, 0, 1, 0, 1, 0, 0, 1],
-    [0, 1, 0, 0, 1, 0, 0, 1, 0],
+    [0, 1, 0, 1, 0, 1, 0, 1, 0],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [0, 1, 0, 1, 0, 1, 0, 1, 0],
     [0, 0, 1, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0]
+    [0, 1, 0, 0, 0, 0, 0, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1]
   ]
 
-  /*const gridSize = 13;
+  const gridSize = 13;
   const patternSize = 9;
-  const offset = 2;*/
-
   const offset = 2;
-  const gridSize = pattern.length + offset * 2;
-  const patternSize = pattern.length;
- 
-
 
     // Data map - Flicker speed map 
   const flickerSpeeds = [];
@@ -48,7 +42,7 @@ const sketch = () => {
     const w = width / gridSize;
     const h = height / gridSize;
 
-    context.lineWidth = 0.5;
+    context.lineWidth = 0,5;
 
     // Draw the background grid
     for(let i = 0; i < gridSize; i++){
