@@ -1,4 +1,5 @@
 const canvasSketch = require('canvas-sketch');
+const { drawIskraPattern } = require('./iskra');
 
 const settings = {
   dimensions: [1080, 1080],
@@ -6,12 +7,8 @@ const settings = {
 };
 
 const sketch = () => {
-
-
-
     return ({ context, width, height, time }) => {
-
-
+      drawIskraPattern(context, width, height, time);
     };
 };
 
